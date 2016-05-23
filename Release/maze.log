@@ -1,0 +1,28 @@
+﻿已經開始建置於 2015/7/29 上午 10:07:31。
+     1>節點 2 (rebuild 目標) 上的專案 "C:\Users\adm\Desktop\maze\maze.vcxproj"。
+     1>_PrepareForClean:
+         正在刪除檔案 "Release\maze.lastbuildstate"。
+       InitializeBuildStatus:
+         由於指定了 "AlwaysCreate"，因此正在建立 "Release\maze.unsuccessfulbuild"。
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt CQLearning.cpp Main.cpp
+         CQLearning.cpp
+         Main.cpp
+     1>Main.cpp(24): warning C4244: '引數' : 將 'time_t' 轉換為 'unsigned int'，由於型別不同，可能導致資料遺失
+     1>Main.cpp(13): warning C4101: 'z' : 未參考的區域變數
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\adm\Desktop\maze\Release\maze.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\maze.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\adm\Desktop\maze\Release\maze.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\adm\Desktop\maze\Release\maze.lib" /MACHINE:X86 Release\CQLearning.obj
+         Release\Main.obj
+         正在產生程式碼
+         已完成程式碼產生
+         maze.vcxproj -> C:\Users\adm\Desktop\maze\Release\maze.exe
+       Manifest:
+         c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\adm\Desktop\maze\Release\maze.exe;#1" /manifest Release\maze.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         正在刪除檔案 "Release\maze.unsuccessfulbuild"。
+         正在變更時間戳記 "Release\maze.lastbuildstate"。
+     1>專案 "C:\Users\adm\Desktop\maze\maze.vcxproj" (rebuild 目標) 建置完成。
+
+建置成功。
+
+經過時間 00:00:00.84
