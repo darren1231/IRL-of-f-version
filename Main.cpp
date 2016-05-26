@@ -5,8 +5,14 @@
 #include "CQLearning.h"
 using namespace std;
 
+using std::clock;
+using std::clock_t; // CPU time
+
+
 int main()
 {
+	clock_t Start,End;
+
 	int i;
 	int j;
 	int k;
@@ -22,7 +28,7 @@ int main()
 	double Reward,error,situation=0;
 
 	CQLearning m_Qlearning;
-	srand(time(NULL));
+	srand((unsigned)time(NULL));
 	for(t=0; t< 1; t++)
 	{
 	    m_Qlearning.MueReset();
@@ -38,7 +44,7 @@ int main()
 		   situation = m_Qlearning.TakeAction(SeAction);//hit_wall:0,hit_goal:1,no_hit:2
 		   if(situation==SHitGoal)
 		   {   
-			   cout<<"Mue take "<<k+1<<" step to goal"<<"\n";
+			   cout<<"Expert(Mue) take "<<k+1<<" step to goal"<<"\n";
 			   cout<<"According to expert's action[actob] transform into Mue :finish"<<endl;
 			   //m_Qlearning.terminal = false;
 			   break;
@@ -106,7 +112,7 @@ int main()
 
 			//system("PAUSE");
 			cout<<"Congratulations !! You succeed at "<<i<<" trial."<<endl;
-			break;//break trial loop
+			//break;//break trial loop
 			
 		}
 		else
@@ -114,10 +120,12 @@ int main()
 			//cout<<error<<"\n";
 			m_Qlearning.Rule();//According to Mul and Mue to caculate for F   f:walk  fw:hit wall
 			m_Qlearning.Omega();//According to F ,obtaining reward function(OMEGA)
-			m_Qlearning.QReset();//Reset Q table to zero for preparation of next Q_learning
+			//m_Qlearning.QReset();//Reset Q table to zero for preparation of next Q_learning
 		}
 	
-		//***************RL*************/use what the reward function what we just get throw into RL
+//*******************************RL***************************/use what the reward function what we just get throw into RL
+		Start = clock();
+
 		for( j = 0; j < EpisodeNum; j++ )//EpisodeNum:2000 
 		{
 			m_Qlearning.Initial_Position();
@@ -140,9 +148,10 @@ int main()
 					break;
 				}
 			}//step
-
+			cout<<"ALL trial: "<<i<<"  RL Episode: "<<j<<"  RL step: "<<k<<endl;
 		}//episode
-		
+		End = clock();
+		cout <<"RL running time is : "<< (End-Start)<<endl;
 	}//iteration
   }//times
   system("pause");

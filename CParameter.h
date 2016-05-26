@@ -2,7 +2,7 @@
 #define _CPARAMETER_H
 
 //training parameter
-#define TrailNum 100
+#define TrailNum 50
 #define EpisodeNum 2000
 #define StepNum 500
 //**************

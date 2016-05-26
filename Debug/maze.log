@@ -1,28 +1,27 @@
-﻿Build started 2016/5/23 下午 07:37:11.
-     1>Project "D:\ghost\git practice\IRL_F_verstion\maze.vcxproj" on node 2 (build target(s)).
+﻿已經開始建置於 2016/5/26 下午 09:27:56。
+     1>節點 2 (build 目標) 上的專案 "D:\github up load program\IRL-of-f-version\maze.vcxproj"。
      1>InitializeBuildStatus:
-         Creating "Debug\maze.unsuccessfulbuild" because "AlwaysCreate" was specified.
+         由於指定了 "AlwaysCreate"，因此正在建立 "Debug\maze.unsuccessfulbuild"。
        ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
          Main.cpp
-     1>d:\ghost\git practice\irl_f_verstion\main.cpp(25): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
        ManifestResourceCompile:
-         All outputs are up-to-date.
+         所有輸出都是最新的。
        Link:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\ghost\git practice\IRL_F_verstion\Debug\maze.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\maze.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\ghost\git practice\IRL_F_verstion\Debug\maze.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\ghost\git practice\IRL_F_verstion\Debug\maze.lib" /MACHINE:X86 Debug\maze.exe.embed.manifest.res
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\github up load program\IRL-of-f-version\Debug\maze.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\maze.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\github up load program\IRL-of-f-version\Debug\maze.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\github up load program\IRL-of-f-version\Debug\maze.lib" /MACHINE:X86 Debug\maze.exe.embed.manifest.res
          Debug\CQLearning.obj
          Debug\Main.obj
        Manifest:
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\maze.exe.embed.manifest" /manifest Debug\maze.exe.intermediate.manifest
-         All outputs are up-to-date.
+         所有輸出都是最新的。
        LinkEmbedManifest:
-         All outputs are up-to-date.
-         maze.vcxproj -> D:\ghost\git practice\IRL_F_verstion\Debug\maze.exe
+         所有輸出都是最新的。
+         maze.vcxproj -> D:\github up load program\IRL-of-f-version\Debug\maze.exe
        FinalizeBuildStatus:
-         Deleting file "Debug\maze.unsuccessfulbuild".
-         Touching "Debug\maze.lastbuildstate".
-     1>Done Building Project "D:\ghost\git practice\IRL_F_verstion\maze.vcxproj" (build target(s)).
+         正在刪除檔案 "Debug\maze.unsuccessfulbuild"。
+         正在變更時間戳記 "Debug\maze.lastbuildstate"。
+     1>專案 "D:\github up load program\IRL-of-f-version\maze.vcxproj" (build 目標) 建置完成。
 
-Build succeeded.
+建置成功。
 
-Time Elapsed 00:00:01.30
+經過時間 00:00:01.02
