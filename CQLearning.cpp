@@ -87,8 +87,8 @@ void CQLearning::QReset()
 }
 void CQLearning::Initial_Position()
 {
-	agentX = 17;
-	agentY = 2;
+	agentX = Initial_X;
+	agentY = Initial_Y;
 }
 void CQLearning::GetState(int *State)
 {

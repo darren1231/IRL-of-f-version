@@ -1,6 +1,9 @@
 #ifndef _CPARAMETER_H
 #define _CPARAMETER_H
 
+#define Initial_X 28
+#define Initial_Y 1
+
 //training parameter
 #define TrailNum 1000
 #define EpisodeNum 2000

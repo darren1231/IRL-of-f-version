@@ -21,9 +21,9 @@ int main()
 	int SeAction,ctrStep=0;
 	int ThisState[DimensionNum];	
 	int NextState[DimensionNum];
-	int action[actob]={2,0,0,0,3,3,3,0,3,0,3,3,3,3,3,0,0,0,0,0,3,3,0,3,0,3,0,3,3,3,0,0,0};//expert action
-	//int action[actstop]={3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
-	//					 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	//int action[actob]={2,0,0,0,3,3,3,0,3,0,3,3,3,3,3,0,0,0,0,0,3,3,0,3,0,3,0,3,3,3,0,0,0};//expert action
+	int action[actstop]={3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
+						 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 	//0:up 1:down 2:left 3:right
 	//int action[act60]={3,3,3,0,0,3,0,3,0,0,0,0,3,3,3,0,0,3,0,3,0,0,3,3,0,3,0,0,0,3,3,3,0,0,0,0,3,3,3,3,3,3,0,0,0,0,0,0,0,0,3,0,3,0,0,3,3,3,3,3};
 	//int action[act20]={0,0,0,3,3,3,0,0,0,0,0,0,3,3,3,3,3,3,0,0,0,0,0,0,3,3,3,3,3,3,0};
@@ -40,7 +40,7 @@ int main()
 
 	    m_Qlearning.MueReset();
 		m_Qlearning.Initial_Position();//initial position 17,2 left_down     goal:2,17 right_up
-		for( k = 0; k <actob; k++ )
+		for( k = 0; k <actstop; k++ )
 		{
 		   m_Qlearning.GetState(ThisState);//use index of this_state to get robot's position now
 		   //cout<<"Expert move to: "<<ThisState[0]<<" ,"<<ThisState[1]<<"\n";
@@ -76,7 +76,7 @@ int main()
 		m_Qlearning.GetState(ThisState);//First step
 		m_Qlearning.GetMu1(ThisState,0);
 		
-		for( k = 1; k < actob; k++ )
+		for( k = 1; k < actstop; k++ )
 		{
 			SeAction = m_Qlearning.EvluateAction(ThisState,0);//return Max q table's action
 			situation = m_Qlearning.TakeAction(SeAction);
