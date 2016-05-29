@@ -39,7 +39,9 @@ class CQLearning
 	   void GetMu1(int *,int );
 	   void GetMu1W(int );
 	   void PrintfMue();
-	   void Rule();
+	   void PrintfMul();
+	   //void Rule();
+	   void Rule_without_bad();
 	   double Error();
 	   void Omega();
 	   void PrintfOmega();

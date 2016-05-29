@@ -16,27 +16,34 @@ int main()
 	int i;
 	int j;
 	int k;
+	int m;
 	int t;
 	int SeAction,ctrStep=0;
 	int ThisState[DimensionNum];	
 	int NextState[DimensionNum];
 	int action[actob]={2,0,0,0,3,3,3,0,3,0,3,3,3,3,3,0,0,0,0,0,3,3,0,3,0,3,0,3,3,3,0,0,0};//expert action
+	//int action[actstop]={3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
+	//					 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 	//0:up 1:down 2:left 3:right
 	//int action[act60]={3,3,3,0,0,3,0,3,0,0,0,0,3,3,3,0,0,3,0,3,0,0,3,3,0,3,0,0,0,3,3,3,0,0,0,0,3,3,3,3,3,3,0,0,0,0,0,0,0,0,3,0,3,0,0,3,3,3,3,3};
 	//int action[act20]={0,0,0,3,3,3,0,0,0,0,0,0,3,3,3,3,3,3,0,0,0,0,0,0,3,3,3,3,3,3,0};
 	//int action[act12]={3,3,0,0,3,3,0,0,0,3,3,0};
 	double Reward,error,situation=0;
 
+	
+
 	CQLearning m_Qlearning;
 	srand((unsigned)time(NULL));
 	for(t=0; t< 1; t++)
 	{
+		Start = clock();
+
 	    m_Qlearning.MueReset();
 		m_Qlearning.Initial_Position();//initial position 17,2 left_down     goal:2,17 right_up
 		for( k = 0; k <actob; k++ )
 		{
 		   m_Qlearning.GetState(ThisState);//use index of this_state to get robot's position now
-		   cout<<"Expert move to: "<<ThisState[0]<<" ,"<<ThisState[1]<<"\n";
+		   //cout<<"Expert move to: "<<ThisState[0]<<" ,"<<ThisState[1]<<"\n";
 		   m_Qlearning.GetMue(ThisState,k);
 		  
 		 
@@ -59,9 +66,11 @@ int main()
 	m_Qlearning.FReset();
 
 	cout<<"Start to training:"<<endl;
-	for( i = 0; i < TrailNum; i++ )//TrailNum:100
+	
+
+	for( i = 0; i < 2000; i++ )//TrailNum:1000
 	{ 
-		cout<<"Trial: "<<i<<endl;
+		//cout<<"Trial: "<<i<<endl;
 		m_Qlearning.Mu1Reset();//Initial Mul to zero
 		m_Qlearning.Initial_Position();
 		m_Qlearning.GetState(ThisState);//First step
@@ -75,18 +84,24 @@ int main()
 			   m_Qlearning.GetMu1W(k);
 			}
 			if(situation==SHitGoal){   
-			   cout<<"Mue take "<<k<<" step to goal"<<"\n";
+			   cout<<"Mul take "<<k<<" step to goal"<<"\n";
 			   m_Qlearning.terminal = false;
+			   //m_Qlearning.GetMu1(ThisState,k);
 			   break;
 		    }
 			else{
 				m_Qlearning.GetState(ThisState);
 				m_Qlearning.GetMu1(ThisState,k);
 			}
+				m_Qlearning.PrintfMul();
 		//cout<<k<<"\n";
 		}
-		error=m_Qlearning.Error();//caculate square error and obtain a set of Mul
-		cout<<"Square error-(Ue_Ul) "<<error<<endl;
+		
+			error=m_Qlearning.Error();//caculate square error and obtain a set of Mul
+		    ofstream itfile("Error.txt", ios::app);
+			itfile << error << "\n";
+			itfile.close();
+		cout<<"Trial: "<<i<<"  Square error-(Ue_Ul) "<<error<<endl;
 		if(i ==20){
 			//m_Qlearning.PrintfOmega();
 		}
@@ -112,25 +127,25 @@ int main()
 
 			//system("PAUSE");
 			cout<<"Congratulations !! You succeed at "<<i<<" trial."<<endl;
-			//break;//break trial loop
+			break;//break trial loop
 			
 		}
 		else
 		{
 			//cout<<error<<"\n";
-			m_Qlearning.Rule();//According to Mul and Mue to caculate for F   f:walk  fw:hit wall
+			m_Qlearning.Rule_without_bad();//Accordingerror to Mul and Mue to caculate for F   f:walk  fw:hit wall
 			m_Qlearning.Omega();//According to F ,obtaining reward function(OMEGA)
 			//m_Qlearning.QReset();//Reset Q table to zero for preparation of next Q_learning
 		}
 	
 //*******************************RL***************************/use what the reward function what we just get throw into RL
-		Start = clock();
+		
 
-		for( j = 0; j < EpisodeNum; j++ )//EpisodeNum:2000 
+		for( j = 0; j < 500; j++ )//EpisodeNum:2000 
 		{
 			m_Qlearning.Initial_Position();
 					//cout<<j<<"\n";
-			for( k = 0; k < StepNum; k++ )//StepNum:500
+			for( k = 0; k < 100; k++ )//StepNum:500
 			{	
 				m_Qlearning.GetState(ThisState);
 
@@ -148,13 +163,22 @@ int main()
 					break;
 				}
 			}//step
-			cout<<"ALL trial: "<<i<<"  RL Episode: "<<j<<"  RL step: "<<k<<endl;
+			//cout<<"ALL trial: "<<i<<"  RL Episode: "<<j<<"  RL step: "<<k<<endl;
 		}//episode
-		End = clock();
-		cout <<"RL running time is : "<< (End-Start)<<endl;
+		
+		
 	}//iteration
-  }//times
-  system("pause");
-    return 0;
+    End = clock();
+	cout <<"ALL running time is : "<< (End-Start)<<endl;
+	
+	ofstream itfile("running time.txt", ios::app);
+			//which trial is success
+			itfile <<End-Start << "\n";	
+			itfile.close();
+}//Experiment_times
+ 
+	
+    system("pause");
+	return 0;
 }//main
 

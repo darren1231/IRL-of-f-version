@@ -299,6 +299,7 @@ void CQLearning::PrintfQ()
 
 
 /*******************************/
+/*
 void CQLearning::Rule()
 {
 	int i;
@@ -340,6 +341,43 @@ void CQLearning::Rule()
 	else if(MueW==0&&Mu1W>0)
 		FW=1;
 	else
+	FW=FW+(1-FW)*a;
+
+}*/
+void CQLearning::Rule_without_bad()
+{
+	int i;
+	int j;
+	double a=0.1;
+	int correct[POSX_BINS][POSY_BINS]={0};
+    for(i=0;i<POSX_BINS;i++)
+	{
+      for(j=0;j<POSY_BINS;j++)
+	  {
+        if(Mue[i][j]==Mu1[i][j]){
+			correct[i][j]=1;
+        }
+		else{			
+			correct[i][j]=0;
+		}
+	  }
+	}
+
+	for(i=0;i<POSX_BINS;i++)
+	{
+      for(j=0;j<POSY_BINS;j++)
+	  {
+        if(correct[i][j]==0){//wrong
+            F[i][j]=F[i][j]+(1-F[i][j])*a;
+        }		
+		else{//right
+            F[i][j]=(1-a)*F[i][j];
+        }
+	  }
+	}
+	if(MueW==Mu1W)//right
+		FW=FW*(1-a);	
+	else//wrong
 	FW=FW+(1-FW)*a;
 
 }
@@ -477,6 +515,24 @@ void CQLearning::PrintfMue()
 		mfile << "\n";
 	}
 	mfile.close();
+	
+}
+
+void CQLearning::PrintfMul()
+{
+	int i;
+	int j;
+	fstream nfile("Mul.txt", ios::out);
+	for( i = 0; i < POSX_BINS; i++ )
+	{
+		for( j = 0; j < POSY_BINS; j++ )
+		{
+			//mfile << Mue[i][j] << ",";
+			nfile << fixed << setprecision(2) << Mu1[i][j] << ",  ";
+		}
+		nfile << "\n";
+	}
+	nfile.close();
 	
 }
 

@@ -2,15 +2,16 @@
 #define _CPARAMETER_H
 
 //training parameter
-#define TrailNum 50
+#define TrailNum 1000
 #define EpisodeNum 2000
 #define StepNum 500
+#define Experiment_times 2000
 //**************
 
 //state space
 #define DimensionNum 2
-#define POSX_BINS 20
-#define POSY_BINS 20
+#define POSX_BINS 30
+#define POSY_BINS 30
 #define ActionNum 4
 //**********
 
@@ -34,6 +35,7 @@
 #define act10 12 
 #define act37 60 
 #define actob 33
+#define actstop 54
 
 
 #endif
